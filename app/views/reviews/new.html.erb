@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-xs-12 col-sm-4 col-sm-offset-4">
+
+      <h1>Add a new review</h1>
+
+      <%= simple_form_for [@restaurant, @review] do |f| %>
+
+        <% if @review.errors.any? %>
+          <div class="errors-container">
+            <ul>
+              <% @review.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= f.input :content %>
+        <%= f.input :star, as: :radio_buttons, collection: [1,2,3,4,5] %>
+        <!-- <%= f.association :restaurant %> -->
+        <%= f.submit "Submit!", class: "btn btn-primary" %>
+      <% end %>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- whatever form, it will generate an html
+<form action="/restaurants" method="post"></form>
+
+
+my path is actually restaurant_reviews
+<form action="/restaurants/19/reviews" method="post"></form>
+
+it doesn't know we are doing nested -->
